@@ -1,13 +1,14 @@
-require'rspec'
-require'pg'
-require'task'
-require'list'
+ENV['RACK_ENV'] = 'test'
 
-DB = PG.connect({:dbname => 'to_do_test'})
+require('rspec')
+require('pg')
+require('pry')
+require('./lib/list')
+require('./lib/task')
 
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM tasks *;")
-    DB.exec("DELETE FROM lists *;")
-  end
-end
+# RSpec.configure do |config|
+#   config.after(:each) do
+#     DB.exec("DELETE FROM lists *;")
+#     DB.exec("DELETE FROM tasks *;")
+#   end
+# end
